@@ -1,5 +1,17 @@
-FROM httpd:2.4
-COPY conf/ /usr/local/apache2/conf/
+FROM ubuntu:18.04
+COPY apache2/ /etc/apache2/
 
-RUN mkdir -p /var/www/html && \
-    mkdir -p /var/log/apache2
+RUN apt update -q  && apt-get install -q -y \
+    apache2 \
+    curl
+
+RUN curl -L -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb \
+    && dpkg -i mod-pagespeed-*.deb \
+    && a2enmod expires \
+    && a2enmod pagespeed \
+    && a2enmod proxy_http \
+    && a2enmod rewrite \
+    && a2ensite peregrine
+
+EXPOSE 80
+CMD apachectl -D FOREGROUND
