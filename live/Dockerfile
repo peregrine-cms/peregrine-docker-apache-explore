@@ -11,6 +11,7 @@ RUN curl -L -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_cu
     && a2enmod pagespeed \
     && a2enmod proxy_http \
     && a2enmod rewrite \
+    && a2dissite 000-default \
     && a2ensite peregrine
 
 EXPOSE 80
