@@ -6,7 +6,7 @@ RUN apt update -q  && apt-get install -q -y \
     curl
 
 RUN curl -L -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb \
-    && dpkg -i mod-pagespeed-*.deb \
+    && echo "N" | dpkg -i mod-pagespeed-*.deb \
     && a2enmod expires \
     && a2enmod pagespeed \
     && a2enmod proxy_http \
