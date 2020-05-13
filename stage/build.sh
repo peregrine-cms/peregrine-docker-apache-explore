@@ -2,4 +2,4 @@
 
 . ./env.sh
 
-docker build -t ${DOCKER_IMAGE} .
+docker build -t ${DOCKER_IMAGE}:feature-contentrestructure-20200413r1 .
