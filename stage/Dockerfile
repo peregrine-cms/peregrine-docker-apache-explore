@@ -3,7 +3,9 @@ COPY apache2/ /etc/apache2/
 
 RUN apt update -q  && apt-get install -q -y \
     apache2 \
-    curl
+    libapache2-mod-auth-openidc \
+    curl \
+    vim
 
 RUN curl -L -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb \
     && dpkg -i mod-pagespeed-*.deb \
@@ -11,6 +13,7 @@ RUN curl -L -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_cu
     && a2enmod pagespeed \
     && a2enmod proxy_http \
     && a2enmod rewrite \
+    && a2enmod headers \
     && a2dissite 000-default \
     && a2ensite peregrine
 
