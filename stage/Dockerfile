@@ -3,7 +3,6 @@ COPY apache2/ /etc/apache2/
 
 RUN apt update -q  && apt-get install -q -y \
     apache2 \
-    libapache2-mod-auth-openidc \
     curl \
     vim
 
