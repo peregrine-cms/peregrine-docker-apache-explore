@@ -4,4 +4,4 @@
 
 imageid=`docker images ${DOCKER_IMAGE} --format {{.ID}}`
 docker tag $imageid ${DOCKER_IMAGE}:latest
-docker push peregrinecms/apache-stage-sso:latest
+docker push peregrinecms/apache-stage:latest
